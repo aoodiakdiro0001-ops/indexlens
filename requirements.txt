@@ -1,0 +1,3 @@
+# IndexLens runs on the Python 3.9+ standard library only.
+# Optional, recommended on Windows for reliable HTTPS certificates:
+certifi
