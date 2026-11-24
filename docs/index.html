@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndexLens — Know exactly why your pages aren't in Google | $29 one-time</title>
+<meta name="description" content="IndexLens scans every URL, names the exact blocker (noindex, robots, redirect, canonical), and hands you a prioritized fix list in minutes. One command. $29 once. No subscription.">
+<style>
+  :root{
+    --ink:#0d1117; --paper:#f6f4ef; --card:#ffffff; --muted:#5c6470;
+    --accent:#c8461c; --accent-dark:#a53712; --line:#e3ded4; --ok:#1a7f37;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,"Times New Roman",serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+  .logo{font-weight:700;font-size:20px;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .btn{display:inline-block;background:var(--accent);color:#fff;padding:13px 26px;border-radius:6px;text-decoration:none;font-weight:600;font-size:16px;transition:.15s}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+  .btn.big{padding:17px 38px;font-size:18px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .hero{padding:72px 0 56px;text-align:center}
+  .kicker{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:18px}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.1;letter-spacing:-.02em;max-width:820px;margin:0 auto 22px}
+  h1 em{font-style:normal;background:linear-gradient(transparent 62%,#f4c9b8 62%)}
+  .sub{font-size:20px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .price-row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .price{font-family:var(--mono);font-size:15px;color:var(--muted);text-decoration:line-through}
+  .n-price{font-family:var(--mono);font-size:17px;color:var(--ok);font-weight:600}
+  .fine{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .terminal{background:#0d1117;border-radius:10px;padding:22px 24px;margin:44px auto 0;max-width:760px;text-align:left;box-shadow:0 24px 60px rgba(13,17,23,.28);overflow:auto}
+  .terminal pre{font-family:var(--mono);font-size:13.5px;line-height:1.75;color:#c9d1d9;white-space:pre-wrap}
+  .t-cmd{color:#7ee787} .t-dim{color:#8b949e} .t-bad{color:#ff7b72} .t-ok{color:#7ee787} .t-key{color:#79c0ff}
+  .logos{padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfaf7}
+  .logos p{text-align:center;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:14px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;padding:64px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px}
+  .card .num{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:10px}
+  .card h3{font-size:21px;margin-bottom:10px;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:16px}
+  h2.sec{text-align:center;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;margin-bottom:8px}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:40px;font-size:18px}
+  .verdicts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding-bottom:64px}
+  .tag{font-family:var(--mono);font-size:13.5px;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:99px}
+  .tag.bad{border-color:#f0b7ad;color:var(--accent-dark);background:#fdf3f0}
+  .tag.good{border-color:#b7e3c4;color:var(--ok);background:#f0f9f3}
+  .compare{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:64px}
+  .compare th,.compare td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:16px}
+  .compare th{background:#fbfaf7;font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .compare td.hl{background:#fdf3f0;font-weight:700}
+  .compare tr:last-child td{border-bottom:none}
+  .cta-band{background:var(--ink);color:#f6f4ef;border-radius:12px;padding:52px 32px;text-align:center;margin-bottom:64px}
+  .cta-band h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:12px;letter-spacing:-.02em}
+  .cta-band p{color:#9aa4b2;margin-bottom:26px;font-size:17px}
+  .guarantee{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding-bottom:60px;font-family:var(--mono);font-size:13.5px;color:var(--muted)}
+  .guarantee span{background:#fff;border:1px solid var(--line);padding:9px 16px;border-radius:6px}
+  footer{border-top:1px solid var(--line);padding:34px 0;font-size:14.5px;color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  footer a{color:var(--ink)}
+  @media(max-width:640px){.hero{padding:48px 0 40px}.compare{font-size:14px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Index<span>Lens</span></div>
+    <a class="btn" href="https://baranavi.gumroad.com/l/vmnkiz">Get it — $29</a>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="kicker">One command · One-time $29 · No subscription</div>
+  <h1>Your pages aren't in Google.<br><em>Now you'll know exactly why.</em></h1>
+  <p class="sub sans">Ahrefs charges <strong>$99/month</strong> to tell you "something's wrong."
+  IndexLens names the exact blocker — per URL — and hands you the fix list in minutes.</p>
+  <div class="price-row sans">
+    <a class="btn big" href="https://baranavi.gumroad.com/l/vmnkiz">Get IndexLens — $29 once</a>
+    <a class="btn big ghost" href="https://github.com/aoodiakdiro0001-ops/indexlens">View on GitHub</a>
+  </div>
+  <div class="price-row">
+    <span class="price">Comparable suites: $99+/mo</span>
+    <span class="n-price">✓ Yours forever for $29</span>
+  </div>
+
+  <div class="terminal">
+<pre><span class="t-cmd">$ python indexlens.py https://client.com/sitemap.xml</span>
+<span class="t-dim">[*] IndexLens — resolving 1 target(s)...</span>
+<span class="t-dim">[*] 142 URL(s) queued. Loading robots.txt...</span>
+[1/142] https://client.com/pricing
+[2/142] https://client.com/blog/old-post
+<span class="t-dim">[+] Done:</span> <span class="t-ok">INDEXED=118</span><span class="t-dim">,</span> <span class="t-bad">BLOCKED:NOINDEX=14</span><span class="t-dim">,</span> <span class="t-bad">BLOCKED:ROBOTS=6</span><span class="t-dim">,</span> <span class="t-bad">NOT_INDEXED=4</span>
+<span class="t-dim">[+] Wrote report.md and report.json</span>
+
+<span class="t-key">## Priority Fix List</span>
+1. <span class="t-bad">/pricing</span> — BLOCKED:NOINDEX — Remove the noindex meta tag.
+2. <span class="t-bad">/blog/old-post</span> — BLOCKED:ROBOTS — Allow for Googlebot in robots.txt.
+3. <span class="t-bad">/new-service</span> — NOT_INDEXED — Request indexing; improve internal links.</pre>
+  </div>
+</section>
+
+<section class="logos">
+  <div class="wrap">
+    <p>Replaces the guesswork of</p>
+    <p class="sans" style="font-size:17px;color:#0d1117;letter-spacing:0;text-transform:none;font-weight:600">Google Search Console · Ahrefs · SEMrush · manual <code style="font-family:var(--mono);background:#eee;padding:2px 6px;border-radius:4px">site:</code> checks · $200/hr SEO consultants</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="grid3">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>Every URL, one verdict</h3>
+      <p>HTTP status + full redirect chain, <code>noindex</code> (meta &amp; header), <code>robots.txt</code> with real wildcard/Allow logic, canonicals — each URL gets one clear verdict.</p>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>Live search presence</h3>
+      <p>Not a guess: IndexLens checks whether each URL actually appears in search results — free, no API key, polite rate-limiting built in.</p>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <h3>A report your client reads</h3>
+      <p>Client-ready <code>report.md</code> + <code>report.json</code>: executive summary, per-URL table, and a Priority Fix List ordered by traffic impact.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">Every blocker, named</h2>
+  <p class="sec-sub sans">No vague "health score." The exact reason, per URL.</p>
+  <div class="verdicts sans">
+    <span class="tag good">INDEXED</span>
+    <span class="tag bad">BLOCKED:NOINDEX</span>
+    <span class="tag bad">BLOCKED:ROBOTS</span>
+    <span class="tag bad">BLOCKED:REDIRECT_301</span>
+    <span class="tag bad">BLOCKED:HTTP_404</span>
+    <span class="tag bad">NOT_INDEXED</span>
+    <span class="tag">ERROR:UNREACHABLE</span>
+    <span class="tag">UNKNOWN</span>
+  </div>
+
+  <h2 class="sec">Why pay $99/month for this?</h2>
+  <p class="sec-sub sans">Indexation problems are one-time problems. They deserve a one-time tool.</p>
+  <table class="compare sans">
+    <tr><th></th><th>SEO suites</th><th>Human audit</th><th class="hl">IndexLens</th></tr>
+    <tr><td>Price</td><td>$99+ <em>per month</em></td><td>$100–400 per site</td><td class="hl">$29 one-time</td></tr>
+    <tr><td>Per-URL root cause</td><td>Vague score</td><td>Days of waiting</td><td class="hl">Exact blocker, instantly</td></tr>
+    <tr><td>Live search presence</td><td>Partial</td><td>Manual</td><td class="hl">Automatic</td></tr>
+    <tr><td>Report</td><td>Export hassle</td><td>Invoice + PDF</td><td class="hl">Markdown + JSON, ready</td></tr>
+    <tr><td>Run it again next month</td><td>Pay again</td><td>Pay again</td><td class="hl">Free, forever</td></tr>
+  </table>
+
+  <div class="cta-band">
+    <h2>One command. One-time $29.</h2>
+    <p class="sans">Python 3.9+ · standard library only · MIT license · works on unlimited client sites</p>
+    <a class="btn big" href="https://baranavi.gumroad.com/l/vmnkiz">Get IndexLens now →</a>
+  </div>
+
+  <div class="guarantee sans">
+    <span>✓ 30-day no-questions refund</span>
+    <span>✓ Free updates for life</span>
+    <span>✓ 27/27 tests passing</span>
+    <span>✓ MIT — use on client work</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 <strong>Baran Avisat</strong> · <a href="mailto:baranavisat@gmail.com">baranavisat@gmail.com</a></div>
+    <div class="sans"><a href="https://baranavi.gumroad.com/">More tools at baranavi.gumroad.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
